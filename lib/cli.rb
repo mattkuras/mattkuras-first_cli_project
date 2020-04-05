@@ -57,7 +57,6 @@ class CLI
         choose_country(1)
     end
 
-
     def display_total_cases
        
         list = Countries.all.sort_by(&:total_cases).reverse
@@ -76,8 +75,6 @@ class CLI
         choose_country(3)
     end
 
-
-
      def display_total_deaths
         list = Countries.all.sort_by(&:total_deaths).reverse
         list.each_with_index do |c, i|
@@ -88,6 +85,8 @@ class CLI
 
 
     def choose_country(list_number)
+        # list number tells choose_country how to sort the @@all array,
+        # and stay_or_go what list to navigate back to after country is selected
         puts ""
         puts ""
         puts "Choose a number to learn more"
@@ -99,6 +98,7 @@ class CLI
             display_l_o_l  
         elsif input == "quit"
             finish
+            #tells program how to sort Countries.all
         elsif input.to_i.between?(0, Countries.all.count)
             if list_number == 1
                 stat = :name 
@@ -109,7 +109,7 @@ class CLI
             elsif list_number == 4
                 stat = :total_deaths
             end
-
+            #specifies that the name list should not be reversed
             if stat == :name
                 list = Countries.all.sort_by(&stat)
                 country = list[input.to_i-1]
