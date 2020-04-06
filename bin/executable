@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby  
+#!/usr/bin/executable ruby  
 
 require 'pry'
 require 'open-uri'
